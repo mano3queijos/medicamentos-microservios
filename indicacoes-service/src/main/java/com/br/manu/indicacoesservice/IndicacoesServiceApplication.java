@@ -1,8 +1,10 @@
-package com.eq4h93i54ghw4tiuh54qoh54qohi50hi.indicacoesservice;
+package com.br.manu.indicacoesservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
+@EnableDiscoveryClient
 @SpringBootApplication
 public class IndicacoesServiceApplication {
 

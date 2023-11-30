@@ -8,10 +8,10 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface MdeicamentoRepository extends JpaRepository<Medicamento, Long> {
+public interface MedicamentoRepository extends JpaRepository<Medicamento, Long> {
 
 
-    Optional<Medicamento> findMedicamentoByCpfPaciente(@Param("cpfPaciente") String cpf);
+    Optional<Medicamento> findMedicamentoByCodigoMedicamento(@Param("codigoMedicamento") String cpf);
 
 
 

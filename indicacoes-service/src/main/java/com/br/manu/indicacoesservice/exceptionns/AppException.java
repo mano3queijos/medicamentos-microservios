@@ -1,4 +1,4 @@
-package com.example.medicacaoservice.exceptionns;
+package com.br.manu.indicacoesservice.exceptionns;
 
 import lombok.Getter;
 import org.springframework.http.HttpStatus;

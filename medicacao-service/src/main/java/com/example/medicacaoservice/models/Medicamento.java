@@ -14,12 +14,11 @@ public class Medicamento {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private  Long id;
-
     private String nome;
     private String funcionalidade;
     private String possiveisReacoes;
-    private String dataValidade;
-    private String cpfPaciente;
+    private LocalDate dataValidade;
+    private String codigoMedicamento;
 
 
 
