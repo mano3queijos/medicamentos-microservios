@@ -24,7 +24,7 @@ public class MedicamentoService {
     public Medicamento createMedicamento(Medicamento medicamento) {
 
 
-     Optional<Medicamento> optionalMedicament = medicamentoRepository.findMedicamentoByCodigoMedicamento(medicamento.getCodigoMedicamento());
+        Optional<Medicamento> optionalMedicament = medicamentoRepository.findMedicamentoByCodigoMedicamento(medicamento.getCodigoMedicamento());
         if (optionalMedicament.isPresent()) {
             throw new AppException("Remedio já existente", HttpStatus.CONFLICT);
         }
@@ -32,8 +32,8 @@ public class MedicamentoService {
         return medicamentoRepository.save(medicamento);
     }
 
-    public Medicamento findMedicamentoByCodigoMedicamento(String codigoMedicamento) {
-        return medicamentoRepository.findMedicamentoByCodigoMedicamento(codigoMedicamento).orElseThrow(() -> new AppException("", HttpStatus.NOT_FOUND));
+    public List<Medicamento> findMedicamentoByCodigoMedicamento(String codigoMedicamento) {
+        return medicamentoRepository.findAllByCodigoMedicamento(codigoMedicamento);
     }
 
 
@@ -67,13 +67,12 @@ public class MedicamentoService {
         List<Medicamento> medicamentosDataValidadeOk = new ArrayList<>();
 
 
-
         LocalDate dataAtual = LocalDate.now();
 
         for (Medicamento medicamento : analisarMedicamentos
         ) {
-      System.out.println(medicamento
-              );
+            System.out.println(medicamento
+            );
         }
 
         for (Medicamento medicamento : analisarMedicamentos
@@ -83,10 +82,10 @@ public class MedicamentoService {
                 System.out.println(dataAtual + " é antes de " + medicamento.getDataValidade());
             }
 
-            if (medicamento.getDataValidade() != null &&  dataAtual.isBefore(medicamento.getDataValidade())) {
-                    medicamentosDataValidadeOk.add(medicamento);
-                }
+            if (medicamento.getDataValidade() != null && dataAtual.isBefore(medicamento.getDataValidade())) {
+                medicamentosDataValidadeOk.add(medicamento);
             }
+        }
 
         return medicamentosDataValidadeOk;
     }

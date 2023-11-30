@@ -1,4 +1,4 @@
-package exceptions;
+package com.br.manu.solicitacaomedicamentoservice.exceptions;
 
 import org.springframework.http.HttpStatus;
 

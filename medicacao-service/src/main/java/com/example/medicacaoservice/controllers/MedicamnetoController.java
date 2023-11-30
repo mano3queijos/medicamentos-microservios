@@ -25,25 +25,25 @@ public class MedicamnetoController {
         return ResponseEntity.created(URI.create("/address" + medicamentoDto.getId())).body(medicamentoDto);
     }
 
-    @GetMapping("/getMedicamentoByCpf/{cpf}")
-    public ResponseEntity<Medicamento> getMedicamentoByiD(@PathVariable String cpf) {
-        Medicamento medicamentoDto = medicamentoService.findMedicamentoByCodigoMedicamento(cpf);
-        return ResponseEntity.created(URI.create("/address" + medicamentoDto.getId())).body(medicamentoDto);
+    @GetMapping("/findMedicamentoByCodigoMedicamento/{codigoMedicamento}")
+    public ResponseEntity<List<Medicamento>> findMedicamentoByCodigoMedicamento(@PathVariable String codigoMedicamento) {
+        return ResponseEntity.ok(medicamentoService.findMedicamentoByCodigoMedicamento(codigoMedicamento));
+
     }
 
     @PutMapping("/updateMedicamento/{medicamentoId}")
-    public ResponseEntity<Medicamento> update( @PathVariable Long medicamentoId, @RequestBody Medicamento medicamento){
+    public ResponseEntity<Medicamento> update(@PathVariable Long medicamentoId, @RequestBody Medicamento medicamento) {
         Medicamento medicamentoDto = medicamentoService.put(medicamento, medicamentoId);
         return ResponseEntity.ok().location(URI.create("/updateMedicamento/" + medicamentoDto.getId())).body(medicamentoDto);
     }
 
     @GetMapping("/getAllMedicamentos")
-    public ResponseEntity<List<Medicamento>> getAllMedicamentos(){
+    public ResponseEntity<List<Medicamento>> getAllMedicamentos() {
         return ResponseEntity.ok(medicamentoService.findAll());
     }
 
     @GetMapping("/getAllMedicamentoWithValidadeOk")
-    public ResponseEntity<List<Medicamento>> getAllMedicamentoWithValidadeOk(){
+    public ResponseEntity<List<Medicamento>> getAllMedicamentoWithValidadeOk() {
         return ResponseEntity.ok(medicamentoService.findAllByDataValidade());
     }
 
